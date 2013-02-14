@@ -77,10 +77,8 @@ def pokeObjToSql(pokeObj):
 	ab = pokeObj['abilities']
 	mv = pokeObj['moves']
 	query = "INSERT INTO usage_stats (pokemon,usage,ability1,ability1percent,ability2,ability2percent,ability3,ability3percent,item,nature,move1,move2,move3,move4,hp,atk,def,spa,spd,spe) VALUES "
-	query += "('{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}');".format(
-		pokeObj['name'],pokeObj['usage'],ab[0][0],ab[0][1],ab[1][0],ab[1][1],ab[2][0],ab[2][1],pokeObj['item'],pokeObj['nature'],mv[0],mv[1],
-		mv[2],mv[3],st['hp'],st['atk'],st['def'],st['spa'],st['spd'],st['spe']
-	).replace("'null'","null")
+	#query += "('{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}');".format(
+	query += ",".join([pokeObj['name'],pokeObj['usage'],ab[0][0],ab[0][1],ab[1][0],ab[1][1],ab[2][0],ab[2][1],pokeObj['item'],pokeObj['nature'],mv[0],mv[1],mv[2],mv[3],st['hp'],st['atk'],st['def'],st['spa'],st['spd'],st['spe'] ]).replace("'null'","null")
 	return query
 	
 baseURL = "http://stats.pokemon-online.eu/Wifi%20OU/"
